@@ -1,0 +1,8 @@
+# Large video files — host separately (CDN/YouTube/Drive)
+*.mov
+*.mp4
+*.avi
+*.mkv
+
+# macOS
+.DS_Store

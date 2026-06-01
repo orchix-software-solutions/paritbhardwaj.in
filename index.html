@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Portfolio — ₹11,999 All-Inclusive Package</title>
+<meta name="description" content="Professional websites starting at ₹11,999 — includes 1 year hosting, 1 year .in domain, mobile responsive design & Google review system." />
+
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand:  '#6C47FF',
+          brand2: '#9B7BFF',
+          accent: '#FF6B35',
+          ink:    '#0C0C0F',
+          ink2:   '#13131A',
+          ink3:   '#1C1C28',
+          muted:  '#6B7280',
+          line:   '#1E1E2E',
+          cream:  '#F5F4FF',
+        },
+        fontFamily: {
+          head:   ['Syne', 'system-ui', 'sans-serif'],
+          serif:  ['Instrument Serif', 'Georgia', 'serif'],
+          body:   ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root { --pad: clamp(20px, 5vw, 64px); }
+  * { box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0C0C0F; color: #F0EFF8; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+  .shell   { width:100%; max-width:1200px; margin-inline:auto; padding-inline:var(--pad); }
+
+  /* Gradient text */
+  .grad-text {
+    background: linear-gradient(135deg, #6C47FF 0%, #A78BFA 50%, #FF6B35 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .grad-text-2 {
+    background: linear-gradient(135deg, #A78BFA, #6C47FF);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  /* Animations */
+  @keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+  @keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+  @keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:.5} }
+  @keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  @keyframes spin     { to{transform:rotate(360deg)} }
+
+  .anim-up   { animation: fadeUp  .75s cubic-bezier(.22,1,.36,1) both; }
+  .anim-fade { animation: fadeIn  .75s ease both; }
+  .d1{animation-delay:.08s} .d2{animation-delay:.2s} .d3{animation-delay:.35s}
+  .d4{animation-delay:.5s}  .d5{animation-delay:.65s}
+
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* Price badge */
+  .price-badge {
+    background: linear-gradient(135deg, #6C47FF, #9B7BFF);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Portfolio card */
+  .port-card {
+    background: #13131A;
+    border: 1px solid #1E1E2E;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+  }
+  .port-card:hover {
+    border-color: #6C47FF55;
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(108,71,255,.15);
+  }
+
+  /* Video wrapper */
+  .video-wrap {
+    position: relative;
+    background: #0C0C0F;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+  .video-wrap video {
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .video-overlay {
+    position:absolute; inset:0;
+    background: linear-gradient(to top, rgba(12,12,15,.9) 0%, rgba(12,12,15,.1) 50%, transparent 100%);
+    display:flex; align-items:center; justify-content:center;
+    transition: opacity .3s ease;
+  }
+  .play-btn {
+    width:60px; height:60px; border-radius:50%;
+    background: rgba(108,71,255,.85); backdrop-filter:blur(4px);
+    border: 2px solid rgba(167,139,250,.5);
+    display:grid; place-items:center;
+    transition: transform .25s ease, background .25s ease;
+    cursor:pointer;
+  }
+  .port-card:hover .play-btn { transform:scale(1.1); background:rgba(108,71,255,1); }
+
+  /* Feature pill */
+  .feat-pill {
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid #1E1E2E; background:#13131A;
+    border-radius:999px; padding:8px 16px;
+    font-size:13px; color:#9CA3AF;
+    transition: border-color .25s ease, color .25s ease;
+  }
+  .feat-pill:hover { border-color:#6C47FF55; color:#A78BFA; }
+
+  /* CTA button */
+  .btn-primary {
+    display:inline-flex; align-items:center; gap:10px;
+    background: linear-gradient(135deg, #6C47FF, #9B7BFF);
+    color:#fff; font-weight:600; font-size:14px;
+    padding:14px 32px; border-radius:10px;
+    transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover {
+    opacity:.92; transform:translateY(-2px);
+    box-shadow:0 12px 30px rgba(108,71,255,.4);
+  }
+  .btn-outline {
+    display:inline-flex; align-items:center; gap:10px;
+    border:1px solid #2A2A3E; color:#9CA3AF; font-size:14px;
+    padding:14px 32px; border-radius:10px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .btn-outline:hover { border-color:#6C47FF55; color:#A78BFA; }
+
+  /* Pricing card */
+  .pricing-card {
+    background: #13131A;
+    border: 1px solid #1E1E2E;
+    border-radius: 20px;
+    padding: 2.5rem;
+    position:relative; overflow:hidden;
+  }
+  .pricing-card.featured {
+    border-color: #6C47FF;
+    background: linear-gradient(135deg, #13131A 0%, #1a1230 100%);
+  }
+  .pricing-card.featured::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at top left, rgba(108,71,255,.12), transparent 60%);
+    pointer-events:none;
+  }
+
+  /* Testimonial */
+  .testi-card {
+    background:#13131A; border:1px solid #1E1E2E; border-radius:14px; padding:1.75rem;
+    transition: border-color .3s ease;
+  }
+  .testi-card:hover { border-color: #6C47FF33; }
+
+  /* Video modal */
+  #videoModal {
+    display:none; position:fixed; inset:0; z-index:1000;
+    align-items:center; justify-content:center; padding:16px;
+  }
+  #videoModal.open { display:flex; }
+  #videoModal .vm-backdrop {
+    position:absolute; inset:0; background:rgba(0,0,0,.92); backdrop-filter:blur(10px);
+    animation:fadeIn .2s ease;
+  }
+  #videoModal .vm-panel {
+    position:relative; z-index:1; width:100%; max-width:940px;
+    animation: fadeUp .3s cubic-bezier(.22,1,.36,1) both;
+  }
+  #vmClose {
+    position:absolute; top:-46px; right:0;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
+    color:#fff; width:36px; height:36px; border-radius:50%;
+    cursor:pointer; display:grid; place-items:center;
+    transition:background .2s ease;
+  }
+  #vmClose:hover { background:rgba(255,255,255,.18); }
+
+  /* Custom player */
+  .vm-player {
+    position:relative; border-radius:14px; overflow:hidden;
+    background:#000;
+    box-shadow: 0 32px 80px rgba(0,0,0,.8), 0 0 0 1px rgba(108,71,255,.2);
+  }
+  .vm-player video {
+    width:100%; display:block; max-height:80vh; background:#000;
+  }
+  .vm-controls {
+    position:absolute; bottom:0; left:0; right:0;
+    background: linear-gradient(to top, rgba(0,0,0,.9) 0%, transparent 100%);
+    padding: 32px 16px 14px;
+    opacity:1; transition: opacity .3s ease;
+  }
+  .vm-player:hover .vm-controls, .vm-player.paused .vm-controls { opacity:1; }
+  .vm-progress {
+    position:relative; height:4px; border-radius:4px;
+    margin-bottom:10px; cursor:pointer;
+  }
+  .vm-progress-bg {
+    position:absolute; inset:0; background:rgba(255,255,255,.2); border-radius:4px;
+  }
+  .vm-progress-fill {
+    position:absolute; top:0; left:0; bottom:0; width:0%;
+    background: linear-gradient(90deg, #6C47FF, #9B7BFF);
+    border-radius:4px; pointer-events:none;
+    transition: width .1s linear;
+  }
+  .vm-progress-thumb {
+    position:absolute; top:50%; transform:translate(-50%,-50%);
+    width:14px; height:14px; border-radius:50%;
+    background:#fff; box-shadow:0 0 0 3px rgba(108,71,255,.5);
+    left:0%; pointer-events:none; opacity:0;
+    transition: opacity .2s ease;
+  }
+  .vm-progress:hover .vm-progress-thumb { opacity:1; }
+  .vm-bar {
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+  }
+  .vm-left, .vm-right { display:flex; align-items:center; gap:8px; }
+  .vm-btn {
+    background:none; border:none; color:rgba(255,255,255,.85); cursor:pointer;
+    padding:4px; display:grid; place-items:center; border-radius:6px;
+    transition: color .2s ease, background .2s ease;
+  }
+  .vm-btn:hover { color:#fff; background:rgba(255,255,255,.1); }
+  .vm-time {
+    font-size:12px; color:rgba(255,255,255,.6);
+    font-family:'Inter',sans-serif; letter-spacing:.02em; white-space:nowrap;
+  }
+  .vm-title-bar {
+    font-size:12px; color:rgba(255,255,255,.5);
+    font-family:'Inter',sans-serif; max-width:240px;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+
+  /* Nav */
+  #mobileNav2 { display:none; }
+  #mobileNav2.open { display:block; }
+
+  /* Marquee */
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-track { animation: marquee 22s linear infinite; display:flex; gap:0; }
+  .marquee-wrap { overflow:hidden; }
+</style>
+</head>
+
+<body>
+
+<!-- ── NAV ── -->
+<header class="sticky top-0 z-50 border-b border-line bg-ink/95 backdrop-blur">
+  <div class="shell flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-3">
+      <img src="photo.jpg" alt="Parit Bhardwaj" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(108,71,255,0.5);" />
+      <span class="font-head font-semibold text-[15px] text-white hidden sm:block">Parit Bhardwaj</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-[13px] text-muted font-medium">
+      <a href="#portfolio" class="hover:text-white transition">Portfolio</a>
+      <a href="#offer"     class="hover:text-white transition">What's Included</a>
+      <a href="#pricing"   class="hover:text-white transition">Pricing</a>
+      <a href="#contact"   class="hover:text-white transition">Contact</a>
+    </nav>
+    <a href="#contact" class="btn-primary text-[12px] px-5 py-2.5 hidden sm:inline-flex">Get Your Website <i class="ph-bold ph-rocket-launch" style="font-size:14px;"></i></a>
+    <button id="navToggle2" class="md:hidden w-9 h-9 grid place-items-center border border-line rounded-lg text-white">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div id="mobileNav2" class="md:hidden border-t border-line bg-ink2">
+    <nav class="shell py-4 flex flex-col gap-1 text-[15px] font-medium text-muted">
+      <a href="#portfolio" class="py-2.5 border-b border-line hover:text-white transition">Portfolio</a>
+      <a href="#offer"     class="py-2.5 border-b border-line hover:text-white transition">What's Included</a>
+      <a href="#pricing"   class="py-2.5 border-b border-line hover:text-white transition">Pricing</a>
+      <a href="#contact"   class="py-2.5 hover:text-white transition">Contact</a>
+      <a href="#contact"   class="btn-primary mt-3 justify-center">Get Your Website <i class="ph-bold ph-rocket-launch" style="font-size:14px;"></i></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="relative overflow-hidden py-24 md:py-36">
+  <!-- BG blobs -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div style="position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(108,71,255,.18),transparent 60%);border-radius:50%;"></div>
+    <div style="position:absolute;bottom:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,107,53,.12),transparent 60%);border-radius:50%;"></div>
+  </div>
+
+  <div class="shell relative z-10 text-center">
+    <h1 class="anim-up d1 font-head font-extrabold leading-[1.05]" style="font-size:clamp(2.4rem,6.5vw,5rem);">
+      Professional Websites<br>
+      <span class="font-serif italic font-normal" style="font-size:clamp(2.2rem,6vw,4.6rem);">starting at</span>
+      <span class="grad-text"> ₹11,999</span>
+    </h1>
+
+    <p class="anim-up d3 mt-6 text-[16px] md:text-[18px] text-muted leading-relaxed max-w-[560px] mx-auto">
+      Everything your business needs online — beautiful design, fast hosting, your own domain, and a Google review system. No hidden costs.
+    </p>
+
+    <div class="anim-up d4 mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="#portfolio" class="btn-primary">
+        View Our Work
+        <i class="ph-bold ph-play-circle" style="font-size:18px;"></i>
+      </a>
+      <a href="#contact" class="btn-outline">
+        Talk to Us
+        <i class="ph-bold ph-chat-circle-dots" style="font-size:16px;"></i>
+      </a>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="anim-up d5 mt-12 flex flex-wrap justify-center gap-6 md:gap-12">
+      <div class="text-center">
+        <div class="font-head font-extrabold text-[2rem] leading-none grad-text">20+</div>
+        <div class="text-[11px] text-muted mt-1 tracking-wide uppercase">Projects Delivered</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,.08);align-self:stretch;" class="hidden md:block"></div>
+      <div class="text-center">
+        <div class="font-head font-extrabold text-[2rem] leading-none grad-text">Websites</div>
+        <div class="text-[11px] text-muted mt-1 tracking-wide uppercase">Web Apps &amp; Mobile Apps</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,.08);align-self:stretch;" class="hidden md:block"></div>
+      <div class="text-center">
+        <div class="font-head font-extrabold text-[2rem] leading-none grad-text">100%</div>
+        <div class="text-[11px] text-muted mt-1 tracking-wide uppercase">Client Satisfaction</div>
+      </div>
+    </div>
+
+    <!-- Included badges -->
+    <div class="anim-up d5 mt-10 flex flex-wrap justify-center gap-2.5">
+      <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>1 Year Hosting</span>
+      <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Free .in Domain</span>
+      <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Mobile Responsive</span>
+      <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Review System</span>
+      <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Fast Delivery</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap" style="background:linear-gradient(135deg,#6C47FF,#9B7BFF);padding:14px 0;overflow:hidden;">
+  <div class="marquee-track whitespace-nowrap">
+    <span class="inline-flex items-center gap-6 pr-6 font-semibold text-[13px] text-white" style="min-width:max-content;">
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-tooth" style="font-size:15px;opacity:.85;"></i> Dental Clinics</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-scissors" style="font-size:15px;opacity:.85;"></i> Beauty Salons</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-barbell" style="font-size:15px;opacity:.85;"></i> Gyms &amp; Fitness</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-fork-knife" style="font-size:15px;opacity:.85;"></i> Restaurants</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-handbag" style="font-size:15px;opacity:.85;"></i> Boutiques</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-hospital" style="font-size:15px;opacity:.85;"></i> Clinics &amp; Hospitals</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-buildings" style="font-size:15px;opacity:.85;"></i> Real Estate</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-chalkboard-teacher" style="font-size:15px;opacity:.85;"></i> Coaching Centres</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-storefront" style="font-size:15px;opacity:.85;"></i> Local Businesses</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-car" style="font-size:15px;opacity:.85;"></i> Auto Services</span>
+      <span class="opacity-40">◆</span>
+    </span>
+    <span class="inline-flex items-center gap-6 pr-6 font-semibold text-[13px] text-white" style="min-width:max-content;" aria-hidden="true">
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-tooth" style="font-size:15px;opacity:.85;"></i> Dental Clinics</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-scissors" style="font-size:15px;opacity:.85;"></i> Beauty Salons</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-barbell" style="font-size:15px;opacity:.85;"></i> Gyms &amp; Fitness</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-fork-knife" style="font-size:15px;opacity:.85;"></i> Restaurants</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-handbag" style="font-size:15px;opacity:.85;"></i> Boutiques</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-hospital" style="font-size:15px;opacity:.85;"></i> Clinics &amp; Hospitals</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-buildings" style="font-size:15px;opacity:.85;"></i> Real Estate</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-chalkboard-teacher" style="font-size:15px;opacity:.85;"></i> Coaching Centres</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-storefront" style="font-size:15px;opacity:.85;"></i> Local Businesses</span>
+      <span class="opacity-40">◆</span>
+      <span class="inline-flex items-center gap-2"><i class="ph-fill ph-car" style="font-size:15px;opacity:.85;"></i> Auto Services</span>
+      <span class="opacity-40">◆</span>
+    </span>
+  </div>
+</div>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio" class="py-20 md:py-32">
+  <div class="shell">
+    <div class="text-center max-w-[560px] mx-auto reveal">
+      <p class="text-[12px] tracking-[0.2em] uppercase text-brand2 font-semibold mb-3">Our Work</p>
+      <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.1] text-white">
+        Websites We've <span class="grad-text">Built</span>
+      </h2>
+      <p class="mt-3 text-[15px] text-muted">Click the play button to watch a full walkthrough of each website.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+
+      <!-- White Pearl Dental -->
+      <div class="port-card reveal">
+        <div class="video-wrap cursor-pointer" onclick="openVideo('white-pearl-clinic.mov', 'White Pearl Dental Care & Implant Center')">
+          <video src="white-pearl-clinic.mov" muted playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-head font-bold text-[1.15rem] text-white mb-0">White Pearl Dental Care & Implant Center</h3>
+          <p class="mt-1.5 text-[13px] text-muted leading-relaxed">Dehradun · Full-service dental clinic website with appointment booking, service pages, gallery &amp; Google review integration.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">5 Pages</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Booking Form</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Gallery</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Looks Salon -->
+      <div class="port-card reveal">
+        <div class="video-wrap cursor-pointer" onclick="openVideo('looks-salon.mov', 'Looks Salon — Moradabad')">
+          <video src="looks-salon.mov" muted playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-head font-bold text-[1.15rem] text-white mb-0">Looks Salon</h3>
+          <p class="mt-1.5 text-[13px] text-muted leading-relaxed">Moradabad · Premium beauty salon with full photo gallery, appointment booking modal, services showcase &amp; client testimonials.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">5 Pages</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Photo Gallery</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Booking Modal</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aesthetic Gym -->
+      <div class="port-card reveal">
+        <div class="video-wrap cursor-pointer" onclick="openVideo('aesthetic-gym.mov','Aesthetic Gym')" style="position:relative;overflow:hidden;">
+          <video src="aesthetic-gym.mov" muted playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <!-- view pages pill -->
+          <div onclick="event.stopPropagation();openGymGallery();"
+               style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);border-radius:100px;padding:5px 12px;font-size:11px;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px;cursor:pointer;border:1px solid rgba(255,255,255,.15);transition:background .2s;"
+               onmouseover="this.style.background='rgba(220,38,38,.85)'" onmouseout="this.style.background='rgba(0,0,0,.7)'">
+            <i class="ph-fill ph-images" style="font-size:12px;"></i> View All Pages
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-head font-bold text-[1.15rem] text-white mb-0">Aesthetic Gym</h3>
+          <p class="mt-1.5 text-[13px] text-muted leading-relaxed">Full fitness centre website with membership plans, trainer profiles, transformation gallery &amp; online enquiry system.</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">5 Pages</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Membership Plans</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Gallery</span>
+            <span class="text-[11px] text-muted border border-line rounded-full px-2.5 py-1">Reviews</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT'S INCLUDED ── -->
+<section id="offer" class="py-20 md:py-32 border-y border-line" style="background:#13131A;">
+  <div class="shell">
+    <div class="text-center max-w-[560px] mx-auto reveal">
+      <p class="text-[12px] tracking-[0.2em] uppercase text-brand2 font-semibold mb-3">The Package</p>
+      <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.1] text-white">
+        Everything <span class="grad-text">Included</span>
+      </h2>
+      <p class="mt-3 text-[15px] text-muted">One flat price. No upsells. No surprises.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+      <div class="border-l-2 border-brand pl-5 py-2 bg-ink rounded-r-2xl border border-line border-l-brand hover:border-brand/40 transition p-6" style="border-left: 3px solid #6C47FF;">
+        <div class="text-[2.5rem] font-head font-extrabold leading-none grad-text-2 mb-3">01</div>
+        <h3 class="font-head font-bold text-white text-[1.05rem] mb-2">Professional Website</h3>
+        <p class="text-[13.5px] text-muted leading-relaxed">Custom-designed, multi-page website built for your specific business — not a generic template.</p>
+      </div>
+      <div class="border border-line rounded-2xl p-6 bg-ink hover:border-brand/40 transition" style="border-left: 3px solid #6C47FF;">
+        <div class="text-[2.5rem] font-head font-extrabold leading-none grad-text-2 mb-3">02</div>
+        <h3 class="font-head font-bold text-white text-[1.05rem] mb-2">1 Year Hosting</h3>
+        <p class="text-[13.5px] text-muted leading-relaxed">Fast, reliable hosting for 12 months — your site stays live with 99.9% uptime, zero extra cost.</p>
+      </div>
+      <div class="border border-line rounded-2xl p-6 bg-ink hover:border-brand/40 transition" style="border-left: 3px solid #6C47FF;">
+        <div class="text-[2.5rem] font-head font-extrabold leading-none grad-text-2 mb-3">03</div>
+        <h3 class="font-head font-bold text-white text-[1.05rem] mb-2">Free .in Domain</h3>
+        <p class="text-[13.5px] text-muted leading-relaxed">Your own yourname.in domain — registered for 1 year and pointed to your site, fully set up.</p>
+      </div>
+      <div class="border border-line rounded-2xl p-6 bg-ink hover:border-brand/40 transition" style="border-left: 3px solid #6C47FF;">
+        <div class="text-[2.5rem] font-head font-extrabold leading-none grad-text-2 mb-3">04</div>
+        <h3 class="font-head font-bold text-white text-[1.05rem] mb-2">Mobile Responsive</h3>
+        <p class="text-[13.5px] text-muted leading-relaxed">Looks perfect on every screen — phone, tablet and desktop. Over 70% of visitors browse on mobile.</p>
+      </div>
+      <div class="border border-line rounded-2xl p-6 bg-ink hover:border-brand/40 transition" style="border-left: 3px solid #6C47FF;">
+        <div class="text-[2.5rem] font-head font-extrabold leading-none grad-text-2 mb-3">05</div>
+        <h3 class="font-head font-bold text-white text-[1.05rem] mb-2">Google Review System</h3>
+        <p class="text-[13.5px] text-muted leading-relaxed">Your Google reviews displayed live on your website — builds instant trust and drives more walk-ins.</p>
+      </div>
+      <div class="border border-line rounded-2xl p-6 bg-ink hover:border-brand/40 transition" style="border-left: 3px solid #6C47FF;">
+        <div class="text-[2.5rem] font-head font-extrabold leading-none grad-text-2 mb-3">06</div>
+        <h3 class="font-head font-bold text-white text-[1.05rem] mb-2">WhatsApp Enquiry</h3>
+        <p class="text-[13.5px] text-muted leading-relaxed">One-tap WhatsApp button so customers can message you directly from your website — instant leads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section id="pricing" class="py-20 md:py-32">
+  <div class="shell">
+    <div class="text-center max-w-[500px] mx-auto reveal">
+      <p class="text-[12px] tracking-[0.2em] uppercase text-brand2 font-semibold mb-3">Transparent Pricing</p>
+      <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.1] text-white">
+        Simple, <span class="grad-text">Flat Pricing</span>
+      </h2>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-6 items-start reveal">
+      <div class="pricing-card featured">
+        <div class="absolute top-5 right-5 text-[10px] tracking-widest uppercase font-bold text-white px-3 py-1 rounded-full" style="background:linear-gradient(135deg,#6C47FF,#9B7BFF);">Most Popular</div>
+
+        <p class="text-[13px] text-muted font-medium mb-2">All-Inclusive Package</p>
+        <div class="flex items-end gap-2 mb-1">
+          <span class="font-head font-extrabold text-[3.5rem] leading-none text-white">₹11,999</span>
+        </div>
+        <p class="text-[13px] text-muted mb-8">One-time payment · No recurring charges in year 1</p>
+
+        <ul class="space-y-3.5 mb-8">
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Professional multi-page website
+          </li>
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            1 year fast web hosting
+          </li>
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Free .in domain (1 year)
+          </li>
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Mobile responsive design
+          </li>
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Google review system
+          </li>
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            WhatsApp enquiry button
+          </li>
+          <li class="flex items-center gap-3 text-[14px] text-white/80">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Delivered in 5–7 days
+          </li>
+        </ul>
+
+        <a href="#contact" class="btn-primary w-full justify-center text-[14px] py-4">
+          Get Started — ₹11,999
+          <i class="ph-bold ph-paper-plane-tilt" style="font-size:18px;"></i>
+        </a>
+
+        <p class="mt-4 text-center text-[12px] text-muted">Renewal after 1 year: hosting + domain at cost</p>
+
+      </div>
+
+      <!-- Custom / Business App card -->
+      <div style="background:linear-gradient(135deg,#12101f,#0e0c1d);border:1px solid rgba(108,71,255,.25);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6C47FF,#FF6B35,#9B7BFF);"></div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.25);border-radius:100px;padding:5px 14px;margin-bottom:16px;">
+              <i class="ph-fill ph-app-window" style="font-size:14px;color:#FF6B35;"></i>
+              <span style="font-size:11px;font-weight:700;color:#FF6B35;letter-spacing:.06em;text-transform:uppercase;">Custom Development</span>
+            </div>
+            <h3 class="font-head font-extrabold text-white" style="font-size:1.5rem;margin-bottom:10px;">Need a Business Management App?</h3>
+            <p style="font-size:14px;color:#9ca3af;line-height:1.7;max-width:520px;">Inventory systems, booking platforms, CRM dashboards, POS software — we build custom web &amp; mobile apps tailored to your exact workflow. Every quote is unique.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+              <span style="font-size:11px;color:#9B7BFF;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);border-radius:100px;padding:4px 12px;">Web Apps</span>
+              <span style="font-size:11px;color:#9B7BFF;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);border-radius:100px;padding:4px 12px;">Mobile Apps</span>
+              <span style="font-size:11px;color:#9B7BFF;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);border-radius:100px;padding:4px 12px;">CRM &amp; ERP</span>
+              <span style="font-size:11px;color:#9B7BFF;background:rgba(108,71,255,.1);border:1px solid rgba(108,71,255,.2);border-radius:100px;padding:4px 12px;">Custom Quote</span>
+            </div>
+          </div>
+          <a href="https://wa.me/917906839314?text=Hi%2C%20I%20need%20a%20custom%20business%20app%20quote"
+             style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#6C47FF,#9B7BFF);border:none;border-radius:14px;padding:16px 28px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;text-decoration:none;box-shadow:0 8px 28px rgba(108,71,255,.35);transition:transform .2s,box-shadow .2s;"
+             onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(108,71,255,.5)'"
+             onmouseout="this.style.transform='';this.style.boxShadow='0 8px 28px rgba(108,71,255,.35)'">
+            <i class="ph-fill ph-chat-circle-dots" style="font-size:20px;"></i>
+            Talk to Us — Get a Quote
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="py-20 md:py-28 border-y border-line" style="background:#13131A;">
+  <div class="shell">
+    <div class="text-center max-w-[500px] mx-auto reveal">
+      <p class="text-[12px] tracking-[0.2em] uppercase text-brand2 font-semibold mb-3">The Process</p>
+      <h2 class="font-head font-extrabold text-[2rem] md:text-[2.6rem] leading-[1.1] text-white">
+        Your site live in <span class="grad-text">5–7 Days</span>
+      </h2>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center mx-auto mb-4" style="background:linear-gradient(135deg,rgba(108,71,255,.2),rgba(108,71,255,.05));border:1px solid rgba(108,71,255,.3);">
+          <span class="font-head font-extrabold text-[1.2rem] grad-text-2">01</span>
+        </div>
+        <h3 class="font-head font-bold text-white text-[1rem] mb-2">Share Details</h3>
+        <p class="text-[13px] text-muted leading-relaxed">Tell us about your business, services, and any photos or content you have.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center mx-auto mb-4" style="background:linear-gradient(135deg,rgba(108,71,255,.2),rgba(108,71,255,.05));border:1px solid rgba(108,71,255,.3);">
+          <span class="font-head font-extrabold text-[1.2rem] grad-text-2">02</span>
+        </div>
+        <h3 class="font-head font-bold text-white text-[1rem] mb-2">We Design</h3>
+        <p class="text-[13px] text-muted leading-relaxed">We build your custom website and send you a preview link within 3–4 days.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center mx-auto mb-4" style="background:linear-gradient(135deg,rgba(108,71,255,.2),rgba(108,71,255,.05));border:1px solid rgba(108,71,255,.3);">
+          <span class="font-head font-extrabold text-[1.2rem] grad-text-2">03</span>
+        </div>
+        <h3 class="font-head font-bold text-white text-[1rem] mb-2">You Review</h3>
+        <p class="text-[13px] text-muted leading-relaxed">Request any changes — we revise until you're 100% happy with the result.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center mx-auto mb-4" style="background:linear-gradient(135deg,rgba(108,71,255,.2),rgba(108,71,255,.05));border:1px solid rgba(108,71,255,.3);">
+          <span class="font-head font-extrabold text-[1.2rem] grad-text-2">04</span>
+        </div>
+        <h3 class="font-head font-bold text-white text-[1rem] mb-2">Go Live!</h3>
+        <p class="text-[13px] text-muted leading-relaxed">We launch your site with hosting and domain — your business is online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="py-20 md:py-32 relative overflow-hidden">
+  <!-- bg glow blobs -->
+  <div style="position:absolute;inset:0;pointer-events:none;z-index:0;">
+    <div style="position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(108,71,255,.13) 0%,transparent 70%);border-radius:50%;"></div>
+  </div>
+
+  <div class="shell" style="position:relative;z-index:1;">
+    <!-- heading -->
+    <div class="max-w-[600px] mx-auto text-center reveal mb-14">
+      <p class="text-[12px] tracking-[0.2em] uppercase text-brand2 font-semibold mb-3">Get In Touch</p>
+      <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.1] text-white mb-4">
+        Let's Build Your<br><span class="grad-text">Website Today</span>
+      </h2>
+      <p class="text-[15px] text-muted">Pick the fastest way to reach us — we'll have your site live within days.</p>
+    </div>
+
+    <!-- contact cards -->
+    <div class="grid md:grid-cols-2 gap-5 max-w-[820px] mx-auto reveal">
+
+      <!-- WhatsApp card -->
+      <a href="https://wa.me/917906839314?text=Hi%2C%20I%27m%20interested%20in%20the%20%E2%82%B911%2C999%20website%20package"
+         style="display:block;text-decoration:none;background:linear-gradient(135deg,#0d2e1a 0%,#0a1f13 100%);border:1px solid rgba(37,211,102,.18);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;"
+         onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(37,211,102,.15)'"
+         onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <!-- top shimmer line -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#25D366,transparent);"></div>
+
+        <!-- icon badge -->
+        <div style="width:56px;height:56px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 24px rgba(37,211,102,.3);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.42 1.31-1.95 1.36-.5.05-.5.41-3.15-.66-2.67-1.08-4.35-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.71 0-1.29.68-1.92.92-2.18.24-.27.53-.33.71-.33.18 0 .35 0 .51.01.16.01.39-.06.6.46.24.58.81 2 .88 2.14.07.14.12.31.02.49-.09.18-.14.29-.27.45-.13.16-.28.36-.4.48-.13.13-.27.28-.12.54.15.27.67 1.11 1.44 1.8.99.88 1.83 1.16 2.09 1.29.26.13.41.11.56-.07.15-.18.65-.76.82-1.02.17-.27.34-.22.57-.13.24.09 1.51.71 1.77.84.26.13.43.2.49.31.06.11.06.62-.18 1.31Z"/></svg>
+        </div>
+
+        <!-- status pill -->
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:100px;padding:4px 12px;margin-bottom:16px;">
+          <span style="width:7px;height:7px;background:#25D366;border-radius:50%;display:inline-block;box-shadow:0 0 0 2px rgba(37,211,102,.3);animation:pulse 2s infinite;"></span>
+          <span style="font-size:11px;font-weight:600;color:#25D366;letter-spacing:.05em;">Usually replies in &lt; 5 min</span>
+        </div>
+
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:8px;">Chat on WhatsApp</h3>
+        <p style="font-size:13.5px;color:#9ca3af;line-height:1.6;margin-bottom:24px;">Send us a message and get an instant quote. Share your business details and we'll plan your site together.</p>
+
+        <!-- mock chat bubble -->
+        <div style="background:rgba(37,211,102,.08);border-radius:12px;padding:12px 16px;margin-bottom:20px;border-left:3px solid #25D366;">
+          <p style="font-size:12px;color:#6ee7a0;margin:0;line-height:1.5;">"Hi, I'm interested in the ₹11,999 website package for my business!"</p>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:13px;font-weight:700;color:#25D366;">Start Chatting →</span>
+          <i class="ph-fill ph-whatsapp-logo" style="font-size:22px;color:#25D366;opacity:.6;"></i>
+        </div>
+      </a>
+
+      <!-- Call card -->
+      <a href="tel:+917906839314"
+         style="display:block;text-decoration:none;background:linear-gradient(135deg,#12101f 0%,#0e0c1d 100%);border:1px solid rgba(108,71,255,.22);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;"
+         onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(108,71,255,.18)'"
+         onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <!-- top shimmer line -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#6C47FF,transparent);"></div>
+
+        <!-- icon badge -->
+        <div style="width:56px;height:56px;background:linear-gradient(135deg,#6C47FF,#9B7BFF);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 24px rgba(108,71,255,.35);">
+          <i class="ph-fill ph-phone-call" style="font-size:26px;color:white;"></i>
+        </div>
+
+        <!-- availability pill -->
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(108,71,255,.12);border:1px solid rgba(108,71,255,.25);border-radius:100px;padding:4px 12px;margin-bottom:16px;">
+          <i class="ph-bold ph-clock" style="font-size:10px;color:#9B7BFF;"></i>
+          <span style="font-size:11px;font-weight:600;color:#9B7BFF;letter-spacing:.05em;">Mon – Sat · 9 AM to 8 PM</span>
+        </div>
+
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:8px;">Talk on a Call</h3>
+        <p style="font-size:13.5px;color:#9ca3af;line-height:1.6;margin-bottom:24px;">Prefer to talk? Call us directly and we'll discuss your requirements, timeline, and everything in between.</p>
+
+        <!-- info rows -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:rgba(108,71,255,.15);border-radius:8px;display:grid;place-items:center;flex-shrink:0;">
+              <i class="ph-bold ph-lightning" style="font-size:13px;color:#9B7BFF;"></i>
+            </div>
+            <span style="font-size:13px;color:#d1d5db;">Free 15-min consultation call</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:rgba(108,71,255,.15);border-radius:8px;display:grid;place-items:center;flex-shrink:0;">
+              <i class="ph-bold ph-check-circle" style="font-size:13px;color:#9B7BFF;"></i>
+            </div>
+            <span style="font-size:13px;color:#d1d5db;">No pressure, no sales tactics</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:13px;font-weight:700;color:#9B7BFF;">Call Now →</span>
+          <i class="ph-fill ph-phone" style="font-size:22px;color:#6C47FF;opacity:.6;"></i>
+        </div>
+      </a>
+    </div>
+
+    <!-- bottom note -->
+    <p class="text-center text-[12px] text-muted mt-8 reveal">Most websites are live within 3–5 working days after content is shared.</p>
+  </div>
+</section>
+
+<!-- ── GYM GALLERY MODAL ── -->
+<div id="gymGallery" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);flex-direction:column;">
+
+  <!-- top bar — title + zoom + close only -->
+  <div style="flex-shrink:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.08);">
+    <span id="gymLabel" style="font-size:13px;font-weight:600;color:#ccc;letter-spacing:.04em;"></span>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <!-- zoom (hidden for video) -->
+      <div id="gymZoomBar" style="display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border-radius:8px;padding:4px 8px;">
+        <button onclick="gymZoom(-1)" style="background:none;border:none;color:#fff;cursor:pointer;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;opacity:.8;"><i class="ph-bold ph-minus"></i></button>
+        <span id="gymZoomLabel" style="font-size:12px;color:#aaa;min-width:36px;text-align:center;">100%</span>
+        <button onclick="gymZoom(1)"  style="background:none;border:none;color:#fff;cursor:pointer;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;opacity:.8;"><i class="ph-bold ph-plus"></i></button>
+        <button onclick="gymZoomReset()" style="background:none;border:none;color:#aaa;cursor:pointer;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;opacity:.7;"><i class="ph-bold ph-arrows-out"></i></button>
+      </div>
+      <button onclick="closeGymGallery()" style="background:rgba(255,255,255,.08);border:none;color:#fff;cursor:pointer;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;">
+        <i class="ph-bold ph-x" style="font-size:15px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- main viewer -->
+  <div style="flex:1;display:flex;align-items:stretch;overflow:hidden;position:relative;">
+
+    <!-- prev arrow -->
+    <button id="gymPrev" onclick="gymNav(-1)"
+      style="position:absolute;left:16px;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s;"
+      onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">
+      <i class="ph-bold ph-caret-left" style="font-size:20px;"></i>
+    </button>
+
+    <!-- scroll area -->
+    <div id="gymScrollArea" style="flex:1;overflow:auto;display:flex;justify-content:center;align-items:flex-start;padding:24px 80px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.15) transparent;">
+      <!-- image view -->
+      <img id="gymImg" src="" alt="" style="display:none;transform-origin:top center;transition:transform .2s;width:auto;max-width:100%;height:auto;" />
+      <!-- video view -->
+      <video id="gymVid" src="" controls style="display:none;max-width:100%;max-height:100%;border-radius:12px;outline:none;"></video>
+    </div>
+
+    <!-- next arrow -->
+    <button id="gymNext" onclick="gymNav(1)"
+      style="position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s;"
+      onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">
+      <i class="ph-bold ph-caret-right" style="font-size:20px;"></i>
+    </button>
+  </div>
+
+  <!-- bottom counter + dots -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:center;gap:10px;">
+    <span id="gymCounter" style="font-size:12px;color:#555;"></span>
+    <div id="gymDots" style="display:flex;gap:6px;"></div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="border-t border-line py-8" style="background:#13131A;">
+  <div class="shell flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-[13px] text-muted">© 2025 Parit Bhardwaj · Web Design Services</p>
+    <p class="text-[13px] text-muted">Built with ❤️ by <a href="https://www.orchixsoftwaresolutions.com/" target="_blank" rel="noopener" class="hover:text-white transition" style="color:#9B7BFF;text-decoration:none;">OrchiX Software Solutions</a></p>
+  </div>
+</footer>
+
+<!-- ── VIDEO MODAL ── -->
+<div id="videoModal">
+  <div class="vm-backdrop" id="vmBackdrop"></div>
+  <div class="vm-panel">
+    <button id="vmClose" aria-label="Close video">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="vm-player" id="vmPlayer">
+      <video id="vmVideo" playsinline></video>
+      <!-- Custom controls -->
+      <div class="vm-controls" id="vmControls">
+        <div class="vm-progress" id="vmProgress">
+          <div class="vm-progress-bg"></div>
+          <div class="vm-progress-fill" id="vmFill"></div>
+          <div class="vm-progress-thumb" id="vmThumb"></div>
+        </div>
+        <div class="vm-bar">
+          <div class="vm-left">
+            <button class="vm-btn" id="vmPlayPause" aria-label="Play/Pause">
+              <svg id="vmPlayIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+              <svg id="vmPauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <button class="vm-btn" id="vmMute" aria-label="Mute">
+              <svg id="vmVolIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <svg id="vmMuteIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            </button>
+            <span class="vm-time" id="vmTime">0:00 / 0:00</span>
+          </div>
+          <div class="vm-right">
+<button class="vm-btn" id="vmFullscreen" aria-label="Fullscreen">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,3 21,3 21,9"/><polyline points="9,21 3,21 3,15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Nav toggle
+  document.getElementById('navToggle2').addEventListener('click', () => {
+    document.getElementById('mobileNav2').classList.toggle('open');
+  });
+  document.querySelectorAll('#mobileNav2 a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mobileNav2').classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Video thumbnails — seek to 1s for poster frame
+  document.querySelectorAll('.video-wrap video').forEach(v => {
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 1; });
+  });
+
+  // ── Custom Video Player ──
+  const modal    = document.getElementById('videoModal');
+  const vmVideo  = document.getElementById('vmVideo');
+  const vmFill   = document.getElementById('vmFill');
+  const vmThumb  = document.getElementById('vmThumb');
+  const vmTime   = document.getElementById('vmTime');
+  const vmPPBtn  = document.getElementById('vmPlayPause');
+  const vmPlayIc = document.getElementById('vmPlayIcon');
+  const vmPauIc  = document.getElementById('vmPauseIcon');
+  const vmVolIc  = document.getElementById('vmVolIcon');
+  const vmMuIc   = document.getElementById('vmMuteIcon');
+  const vmPlayer = document.getElementById('vmPlayer');
+  const vmProg   = document.getElementById('vmProgress');
+
+  function fmt(s) {
+    const m = Math.floor(s/60), ss = Math.floor(s%60);
+    return `${m}:${ss<10?'0':''}${ss}`;
+  }
+  function updateProgress() {
+    if (!vmVideo.duration) return;
+    const pct = (vmVideo.currentTime / vmVideo.duration) * 100;
+    vmFill.style.width  = pct + '%';
+    vmThumb.style.left  = pct + '%';
+    vmTime.textContent  = `${fmt(vmVideo.currentTime)} / ${fmt(vmVideo.duration)}`;
+  }
+
+  vmVideo.addEventListener('timeupdate', updateProgress);
+  vmVideo.addEventListener('play',  () => { vmPlayIc.style.display='none'; vmPauIc.style.display=''; vmPlayer.classList.remove('paused'); });
+  vmVideo.addEventListener('pause', () => { vmPlayIc.style.display=''; vmPauIc.style.display='none'; vmPlayer.classList.add('paused'); });
+  vmVideo.addEventListener('ended', () => { vmPlayIc.style.display=''; vmPauIc.style.display='none'; });
+
+  // Play/pause
+  document.getElementById('vmPlayPause').addEventListener('click', () => {
+    vmVideo.paused ? vmVideo.play() : vmVideo.pause();
+  });
+  // Click video to toggle play
+  vmVideo.addEventListener('click', () => { vmVideo.paused ? vmVideo.play() : vmVideo.pause(); });
+
+  // Mute
+  document.getElementById('vmMute').addEventListener('click', () => {
+    vmVideo.muted = !vmVideo.muted;
+    vmVolIc.style.display = vmVideo.muted ? 'none' : '';
+    vmMuIc.style.display  = vmVideo.muted ? '' : 'none';
+  });
+
+  // Seek
+  function seekTo(e) {
+    const rect = vmProg.getBoundingClientRect();
+    const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    vmVideo.currentTime = pct * vmVideo.duration;
+  }
+  let seeking = false;
+  vmProg.addEventListener('mousedown', e => { seeking=true; seekTo(e); });
+  window.addEventListener('mousemove', e => { if(seeking) seekTo(e); });
+  window.addEventListener('mouseup',   () => { seeking=false; });
+  vmProg.addEventListener('click', seekTo);
+
+  // Fullscreen
+  document.getElementById('vmFullscreen').addEventListener('click', () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else vmPlayer.requestFullscreen && vmPlayer.requestFullscreen();
+  });
+
+  // Keyboard shortcuts inside modal
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeVideo();
+    if (e.key === ' ')           { e.preventDefault(); vmVideo.paused ? vmVideo.play() : vmVideo.pause(); }
+    if (e.key === 'ArrowRight')  vmVideo.currentTime = Math.min(vmVideo.duration, vmVideo.currentTime + 10);
+    if (e.key === 'ArrowLeft')   vmVideo.currentTime = Math.max(0, vmVideo.currentTime - 10);
+    if (e.key === 'm')           { vmVideo.muted=!vmVideo.muted; vmVolIc.style.display=vmVideo.muted?'none':''; vmMuIc.style.display=vmVideo.muted?'':'none'; }
+  });
+
+  function openVideo(src, title) {
+    vmVideo.src = src;
+    vmVideo.play();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateProgress();
+  }
+  function closeVideo() {
+    vmVideo.pause();
+    vmVideo.src = '';
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    vmFill.style.width='0%'; vmThumb.style.left='0%';
+  }
+
+  document.getElementById('vmClose').addEventListener('click', closeVideo);
+  document.getElementById('vmBackdrop').addEventListener('click', closeVideo);
+
+  window.openVideo  = openVideo;
+  window.closeVideo = closeVideo;
+
+  // ── Gym Gallery ──
+  const gymItems = [
+    { type: 'video', src: 'aesthetic-gym.mov', label: 'Demo Video' },
+    { type: 'image', src: 'gym-home.png',       label: 'Home Page' },
+    { type: 'image', src: 'gym-about.png',      label: 'About Page' },
+    { type: 'image', src: 'gym-services.png',   label: 'Services Page' },
+    { type: 'image', src: 'gym-membership.png', label: 'Membership Page' },
+    { type: 'image', src: 'gym-contact.png',    label: 'Contact Page' },
+  ];
+  let gymIdx   = 0;
+  let gymScale = 1;
+  const gymModal      = document.getElementById('gymGallery');
+  const gymImg        = document.getElementById('gymImg');
+  const gymVid        = document.getElementById('gymVid');
+  const gymZoomLabel  = document.getElementById('gymZoomLabel');
+  const gymZoomBar    = document.getElementById('gymZoomBar');
+  const gymLabelEl    = document.getElementById('gymLabel');
+  const gymCounter    = document.getElementById('gymCounter');
+  const gymDotsEl     = document.getElementById('gymDots');
+  const gymScrollArea = document.getElementById('gymScrollArea');
+
+  // Build dots once
+  gymItems.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.style.cssText = 'width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);display:inline-block;cursor:pointer;transition:background .2s,transform .2s;';
+    dot.addEventListener('click', () => gymGoTo(i));
+    gymDotsEl.appendChild(dot);
+  });
+
+  function gymUpdateUI() {
+    const item = gymItems[gymIdx];
+    gymLabelEl.textContent = item.label;
+    gymCounter.textContent = `${gymIdx + 1} / ${gymItems.length}`;
+    document.getElementById('gymPrev').style.opacity = gymIdx === 0 ? '.3' : '1';
+    document.getElementById('gymNext').style.opacity = gymIdx === gymItems.length - 1 ? '.3' : '1';
+    gymDotsEl.querySelectorAll('span').forEach((d, i) => {
+      d.style.background = i === gymIdx ? '#dc2626' : 'rgba(255,255,255,.25)';
+      d.style.transform  = i === gymIdx ? 'scale(1.4)' : 'scale(1)';
+    });
+    // show/hide zoom bar
+    gymZoomBar.style.display = item.type === 'image' ? 'flex' : 'none';
+  }
+
+  function gymGoTo(i) {
+    gymIdx = Math.max(0, Math.min(gymItems.length - 1, i));
+    const item = gymItems[gymIdx];
+    gymScrollArea.scrollTop = 0;
+
+    if (item.type === 'video') {
+      gymVid.pause();
+      gymImg.style.display = 'none';
+      gymVid.style.display = 'block';
+      gymVid.src = item.src;
+    } else {
+      gymVid.pause(); gymVid.src = '';
+      gymVid.style.display = 'none';
+      gymImg.style.display = 'block';
+      gymImg.src = item.src;
+      gymImg.alt = item.label;
+      gymImg.style.transform = `scale(${gymScale})`;
+    }
+    gymUpdateUI();
+  }
+
+  function gymNav(dir) { gymGoTo(gymIdx + dir); }
+
+  function gymSetScale(s) {
+    gymScale = Math.max(0.3, Math.min(3, s));
+    gymImg.style.transform = `scale(${gymScale})`;
+    gymZoomLabel.textContent = Math.round(gymScale * 100) + '%';
+  }
+  function gymZoom(dir) { gymSetScale(gymScale + dir * 0.2); }
+  function gymZoomReset() { gymSetScale(1); }
+
+  function openGymGallery() {
+    gymScale = 1;
+    gymZoomLabel.textContent = '100%';
+    gymModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    gymGoTo(0);
+  }
+  function closeGymGallery() {
+    gymVid.pause(); gymVid.src = '';
+    gymModal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // Ctrl+Scroll zoom for images
+  gymScrollArea.addEventListener('wheel', e => {
+    if ((e.ctrlKey || e.metaKey) && gymItems[gymIdx].type === 'image') {
+      e.preventDefault();
+      gymSetScale(gymScale - e.deltaY * 0.002);
+    }
+  }, { passive: false });
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (gymModal.style.display !== 'flex') return;
+    if (e.key === 'Escape')               closeGymGallery();
+    if (e.key === 'ArrowRight')           gymNav(1);
+    if (e.key === 'ArrowLeft')            gymNav(-1);
+    if (e.key === '+' || e.key === '=')   gymZoom(1);
+    if (e.key === '-')                    gymZoom(-1);
+    if (e.key === '0')                    gymZoomReset();
+  });
+
+  gymModal.addEventListener('click', e => { if (e.target === gymModal) closeGymGallery(); });
+
+  window.openGymGallery  = openGymGallery;
+  window.closeGymGallery = closeGymGallery;
+  window.gymNav          = gymNav;
+  window.gymZoom         = gymZoom;
+  window.gymZoomReset    = gymZoomReset;
+</script>
+</body>
+</html>
