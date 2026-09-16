@@ -36,3 +36,9 @@ Adding a project means one folder under `src/app/projects/` exporting
 - Content lives in plain arrays at the top of each file; there is no CMS.
 - `public/resume.pdf` is generated from a standalone HTML resume, so its
   project links point back at the detail pages above.
+
+## Deploy
+
+Hosted on Vercel. The project's **Framework Preset must be `Next.js`** — on
+`Other`, Vercel skips the build and serves `public/` as a static folder, which
+404s at the edge because there is no `index.html` in it.
