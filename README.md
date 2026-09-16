@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# paritbhardwaj.in
 
-## Getting Started
+Personal portfolio — a single scrolling page plus a detail page per project.
 
-First, run the development server:
+Next.js 16 · React 19 · TypeScript · Tailwind CSS v4
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Projects
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Project | What it is | Stack |
+| --- | --- | --- |
+| [MeetMind](https://paritbhardwaj.in/projects/meetmind) | AI meeting assistant — a bot joins the call, transcribes it, and turns the transcript into summaries, action items and a RAG chat over your history | Next.js · Express · Prisma · PostgreSQL · ChromaDB · Groq · Stripe |
+| [Bazark](https://paritbhardwaj.in/projects/bazark) | Arabic-first multi-vendor marketplace — RTL storefront, live auctions, AI-assisted listings, escrow checkout | Next.js · Express · MongoDB · Redis · Elasticsearch · Azure |
+| [WareFlow](https://paritbhardwaj.in/projects/wareflow) | Multi-warehouse inventory — stock, purchasing, BOM manufacturing, WhatsApp alerts | Next.js · Bun · Fastify · Drizzle · PostgreSQL |
+| [Sherly Jewels](https://paritbhardwaj.in/projects/sherly-jewels) | Jewellery ERP — orders, CAD approvals, allocation, factory job cards | Next.js · Bun · Fastify · MongoDB · S3 · Firebase |
+| [NextView KAVACH](https://paritbhardwaj.in/projects/nextview-kavach) | Dealer portal for license activation, renewals and expiry tracking | React · Vite · Express · MongoDB |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```
+src/app/page.tsx              homepage — intro, experience, projects, contact
+src/app/projects/<slug>/      one file per project, data only
+src/components/project-page   shared layout every project page renders through
+public/<slug>/                screenshots
+```
 
-To learn more about Next.js, take a look at the following resources:
+Adding a project means one folder under `src/app/projects/` exporting
+`<ProjectPage />` with its copy, stack and shots — no layout work.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Content lives in plain arrays at the top of each file; there is no CMS.
+- `public/resume.pdf` is generated from a standalone HTML resume, so its
+  project links point back at the detail pages above.
