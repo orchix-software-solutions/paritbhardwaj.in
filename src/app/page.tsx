@@ -80,10 +80,7 @@ export default function Home() {
 
       <section id="github" className="scroll-mt-16 border-t border-dashed border-rail px-5 py-16 sm:px-8">
         <Reveal>
-          <div className="flex items-baseline justify-between gap-4">
-            <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">GitHub</h2>
-            <span className="text-xs text-muted tabular-nums">{experience()} experience</span>
-          </div>
+          <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">GitHub</h2>
           <div className="mt-6 text-muted">
             <GithubGraph />
           </div>
@@ -92,7 +89,10 @@ export default function Home() {
 
       <section id="experience" className="scroll-mt-16 border-t border-dashed border-rail px-5 py-16 sm:px-8">
         <Reveal>
-          <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">Worked with</h2>
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">Worked with</h2>
+            <span className="text-xs text-muted tabular-nums">{experience()} experience</span>
+          </div>
           <ul className="mt-6">
             {companies.map((c) => (
               <li key={c.name} className="flex items-center justify-between gap-4 border-b border-dashed border-rail py-4 last:border-b-0">

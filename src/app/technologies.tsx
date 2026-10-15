@@ -1,4 +1,4 @@
-// Same list and Simple Icons logos as paritbhardwaj.in. `mono` logos are black, so they're inverted in dark mode.
+// Same list as the old paritbhardwaj.in; Simple Icons logos saved in public/tech (served by Vercel, no third-party CDN). `mono` logos are black, so they're inverted in dark mode.
 const tech: { name: string; group: string; slug?: string; mono?: boolean; icon?: React.ReactNode }[] = [
   { name: "React", group: "Frontend", slug: "react" },
   { name: "Next.js", group: "Frontend", slug: "nextdotjs", mono: true },
@@ -21,7 +21,7 @@ const tech: { name: string; group: string; slug?: string; mono?: boolean; icon?:
   },
   { name: "Fastify", group: "Backend", slug: "fastify", mono: true },
   { name: "Bun", group: "Backend", slug: "bun", mono: true },
-  { name: "Drizzle", group: "Databases", slug: "drizzle/000000", mono: true }, // brand lime is invisible on white,
+  { name: "Drizzle", group: "Databases", slug: "drizzle", mono: true }, // saved black: brand lime is invisible on white
   { name: "Docker", group: "Cloud & DevOps", slug: "docker" },
   { name: "Kubernetes", group: "Cloud & DevOps", slug: "kubernetes" },
   { name: "Firebase", group: "Databases", slug: "firebase" },
@@ -84,7 +84,7 @@ export default function Technologies() {
               {t.icon ?? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={`https://cdn.simpleicons.org/${t.slug}`}
+                  src={`/tech/${t.slug}.svg`}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"

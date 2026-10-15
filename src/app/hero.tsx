@@ -40,8 +40,8 @@ function BlurIn({
     <motion.span
       key={i}
       className={`inline-block whitespace-pre ${className}`}
-      initial={{ opacity: 0, y: from, filter: "blur(14px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ y: from, filter: "blur(14px)" }}
+      animate={{ y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.9, ease, delay: delay + i * 0.08 }}
     >
       {word + " "}
@@ -53,8 +53,8 @@ export default function Hero() {
   return (
     <section className="px-5 pt-2 pb-16 sm:px-8 sm:pt-4">
       <motion.div
-        initial={{ opacity: 0, y: -48, filter: "blur(14px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ y: -48, filter: "blur(14px)" }}
+        animate={{ y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.9, ease }}
       >
         {/* sways side to side like it's vibing to the music in the headphones */}

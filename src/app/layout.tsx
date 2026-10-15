@@ -54,7 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </MotionProvider>
         </div>
         {/* oneko: pixel cat that chases the cursor (github.com/adryd325/oneko.js), same as paritbhardwaj.in */}
-        <Script src="/oneko.js" data-cat="/oneko.gif" />
+        <Script src="/oneko.js" data-cat="/oneko.gif" strategy="lazyOnload" />
       </body>
     </html>
   );
