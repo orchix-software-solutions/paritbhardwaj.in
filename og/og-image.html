@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG Image</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,500&family=Instrument+Serif:ital@0;1&display=block" rel="stylesheet">
+<style>
+  :root {
+    --ink: #141110;
+    --muted: #8c7b70;
+    --skin: #c9794c;       /* warm tone pulled from the avatar's skin */
+    --rail: #d4d4d4;
+    --hatch: #e5e5e5;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  html { background: #fff; }
+  body {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    /* same hatched backdrop as the homepage */
+    background: repeating-linear-gradient(-45deg, var(--hatch) 0 1px, #fff 1px 12px);
+  }
+  .abs { position: absolute; }
+  /* the homepage's white column with dashed rails */
+  .column { left: 48px; right: 48px; top: 0; bottom: 0; background: #fff; border-left: 1px dashed var(--rail); border-right: 1px dashed var(--rail); }
+
+  /* left column */
+  .text { left: 100px; top: 128px; }
+  h1 {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-size: 88px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  h2 { font-size: 23px; font-weight: 500; font-style: italic; margin-top: 18px; letter-spacing: -0.01em; }
+  .rule { width: 44px; height: 3px; background: var(--skin); border-radius: 2px; margin: 22px 0; }
+  .card {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 24px;
+    background: #fff;
+    border: 1px solid #efe4dc;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(120, 70, 40, .08);
+  }
+  .card { max-width: 540px; }
+  p { font-family: "Instrument Serif", serif; font-style: italic; font-size: 21px; line-height: 1.35; color: var(--muted); }
+  p b { font-weight: 400; color: var(--ink); }
+
+  /* right side */
+  .main { left: 690px; top: 100px; width: 420px; filter: drop-shadow(0 24px 34px rgba(120, 70, 40, .22)); }
+
+  .tags { display: flex; gap: 10px; margin-top: 20px; }
+  .tags span {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #efe4dc;
+  }
+  .tags img { width: 24px; height: 24px; }
+  .tags img.wide { width: 34px; height: 34px; }
+  .note { left: 1000px; top: 34px; font-size: 17px; color: var(--skin); line-height: 1; transform: rotate(5deg); }
+  svg.arrows { position: absolute; left: 0; top: 0; overflow: visible; }
+  svg.arrows path { fill: none; stroke: var(--skin); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+  <div class="abs column"></div>
+  <div class="abs text">
+    <h1>Parit Bhardwaj</h1>
+    <h2>Senior AI &amp; Full Stack Engineer</h2>
+    <div class="rule"></div>
+    <div class="card">
+      <p>&ldquo;<b>I build beautiful products, from the first idea to launch day.</b> AI&#8209;powered features, polished interfaces and the solid backends behind them, designed, built and shipped end to end.&rdquo;</p>
+    </div>
+    <div class="tags">
+      <span><img src="icons/nextdotjs.svg" alt="Next.js"></span><span><img src="icons/typescript.svg" alt="TypeScript"></span><span><img src="icons/nodedotjs.svg" alt="Node.js"></span><span><img src="icons/nestjs.svg" alt="NestJS"></span><span><img class="wide" src="icons/go.svg" alt="Go"></span><span><img src="icons/python.svg" alt="Python"></span><span><img src="icons/postgresql.svg" alt="PostgreSQL"></span><span><img src="icons/claude.svg" alt="Claude"></span>
+    </div>
+  </div>
+
+  <img class="abs main" src="smile.png" alt="">
+
+
+  <div class="abs note">yep, that's me</div>
+  <svg class="arrows" width="1200" height="630">
+    <path d="M1018 64 Q 978 74, 986 110"/>
+    <path d="M988.9 99.4 L986 110 L978.9 101.6"/>
+  </svg>
+</body>
+</html>

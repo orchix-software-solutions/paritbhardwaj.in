@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --fg: #141110;
+  --muted: #8c7b70;
+  --rail: #d4d4d4;
+  --hatch: #e5e5e5;
+  --btn-bg: #f7f6f5;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0c0b0a;
+  --fg: #f3eee9;
+  --muted: #a5958a;
+  --rail: #3b3633;
+  --hatch: #221f1d;
+  --btn-bg: #171513;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-rail: var(--rail);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  min-height: 100%;
+  background: repeating-linear-gradient(-45deg, var(--hatch) 0 1px, var(--bg) 1px 12px);
+  color: var(--fg);
+}
+
+/* Button with a warm light that runs around its border continuously. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+.btn-beam {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--btn-bg), var(--btn-bg)) padding-box,
+    conic-gradient(from var(--beam-angle), transparent 0 72%, #e8823a 92%, #ffd9b8 97%, transparent 100%) border-box,
+    linear-gradient(var(--rail), var(--rail)) border-box;
+  animation: beam-spin 3s linear infinite;
+}
+.btn-beam:focus-visible {
+  outline: 1px solid #e8823a;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-beam {
+    animation: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* GitHub graph mirrored: newest month on the left, older to the right. Labels flipped back so they read normally. */
+.react-activity-calendar__calendar {
+  transform: scaleX(-1);
+}
+.react-activity-calendar__calendar text {
+  transform: scaleX(-1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Current month label the library hides early in the month (set from github-graph.tsx). */
+.gh-graph .react-activity-calendar__scroll-container {
+  position: relative;
+}
+.gh-graph .react-activity-calendar__scroll-container::before {
+  content: var(--gh-month, none);
+  position: absolute;
+  top: 2px;
+  left: 0;
+  font-size: 12px;
+  line-height: 1;
 }

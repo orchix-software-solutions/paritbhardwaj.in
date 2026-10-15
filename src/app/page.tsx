@@ -1,69 +1,161 @@
 import Image from "next/image";
+import Hero from "./hero";
+import { GithubGraph } from "./github-graph";
+import { Reveal } from "./smooth-scroll";
+import Technologies from "./technologies";
+
+// From the Professional Experience section on paritbhardwaj.in, most recent first.
+const companies: {
+  name: string;
+  role: string;
+  dates: string;
+  span: [string, string]; // first and last month worked, "YYYY-MM"
+  logo: string;
+  logoTile?: boolean; // logo is already a full coloured tile, so no white backing
+  href?: string;
+}[] = [
+  {
+    name: "Albearoti Solutions",
+    role: "Team Lead / Full Stack Engineer",
+    dates: "2024 — 2026",
+    span: ["2024-10", "2026-08"],
+    logo: "/logo-albearoti.jpg",
+    href: "https://www.albearoti.com/",
+  },
+  {
+    name: "AICAN Private Limited",
+    role: "Software Development Engineer",
+    dates: "2023 — 2024",
+    span: ["2023-05", "2024-09"],
+    logo: "/logo-aican.webp",
+  },
+  {
+    name: "BrightIntern",
+    role: "Frontend Development Intern",
+    dates: "2023",
+    span: ["2023-02", "2023-05"],
+    logo: "/logo-bright-intern.png",
+  },
+  {
+    name: "Microelectronics",
+    role: "Web Developer",
+    dates: "2021",
+    span: ["2021-06", "2021-12"],
+    logo: "/logo-microelectronics.svg",
+    logoTile: true,
+  },
+];
+
+// Total months worked, counting overlapping months once, e.g. "4 years 2 months".
+function experience() {
+  const index = (ym: string) => Number(ym.slice(0, 4)) * 12 + Number(ym.slice(5, 7));
+  const months = new Set<number>();
+  for (const { span } of companies) {
+    for (let i = index(span[0]); i <= index(span[1]); i++) months.add(i);
+  }
+  const years = Math.floor(months.size / 12);
+  const rest = months.size % 12;
+  return [years && `${years} year${years > 1 ? "s" : ""}`, rest && `${rest} month${rest > 1 ? "s" : ""}`].filter(Boolean).join(" ");
+}
+
+// ponytail: placeholder sections; swap in real content.
+const sections: { id: string; title: string; items?: string[] }[] = [
+  { id: "work", title: "Work" },
+  { id: "side-projects", title: "Side projects" },
+  {
+    id: "articles",
+    title: "Articles",
+    items: [
+      "How to learn & master a new skill under a week with Claude",
+      "How I Passed the AZ-400 Azure DevOps Engineer Exam With No Prior Cloud Certification",
+    ],
+  },
+  { id: "about", title: "About" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero />
+
+      <section id="github" className="scroll-mt-16 border-t border-dashed border-rail px-5 py-16 sm:px-8">
+        <Reveal>
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">GitHub</h2>
+            <span className="text-xs text-muted tabular-nums">{experience()} experience</span>
+          </div>
+          <div className="mt-6 text-muted">
+            <GithubGraph />
+          </div>
+        </Reveal>
+      </section>
+
+      <section id="experience" className="scroll-mt-16 border-t border-dashed border-rail px-5 py-16 sm:px-8">
+        <Reveal>
+          <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">Worked with</h2>
+          <ul className="mt-6">
+            {companies.map((c) => (
+              <li key={c.name} className="flex items-center justify-between gap-4 border-b border-dashed border-rail py-4 last:border-b-0">
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={c.logo}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className={`size-12 shrink-0 rounded-lg object-contain ${c.logoTile ? "" : "border border-rail bg-white p-1"}`}
+                  />
+                  <div>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-serif text-2xl tracking-tight underline-offset-4 hover:underline"
+                      >
+                        {c.name}
+                      </a>
+                    ) : (
+                      <span className="font-serif text-2xl tracking-tight">{c.name}</span>
+                    )}
+                    <p className="mt-1 text-xs text-muted">{c.role}</p>
+                  </div>
+                </div>
+                <span className="shrink-0 text-xs text-muted tabular-nums">{c.dates}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </section>
+
+      <section id="technologies" className="scroll-mt-16 border-t border-dashed border-rail px-5 py-16 sm:px-8">
+        <Reveal>
+          <h2 className="text-[11px] font-medium tracking-[0.2em] text-muted uppercase">Technologies</h2>
+          <Technologies />
+        </Reveal>
+      </section>
+
+      {sections.map((s) => (
+        <section key={s.id} id={s.id} className="min-h-[80vh] scroll-mt-16 border-t border-dashed border-rail px-5 py-16 sm:px-8">
+          <Reveal>
+            <h2 className="font-serif text-4xl tracking-tight">{s.title}</h2>
+            {s.items ? (
+              <ul className="mt-6">
+                {s.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-baseline justify-between gap-4 border-b border-dashed border-rail py-4 last:border-b-0"
+                  >
+                    <span className="font-serif text-2xl tracking-tight">{item}</span>
+                    <span className="shrink-0 text-xs text-muted">Soon</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-3 text-sm text-muted">Coming soon.</p>
+            )}
+          </Reveal>
+        </section>
+      ))}
+    </>
   );
 }
